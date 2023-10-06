@@ -26,7 +26,7 @@ const NewsDetails = () => {
                     </div>
                     <h1 className="text-xl md:text-2xl font-semibold my-4">Editors Insight</h1>
 
-                    <div className="flex flex-col gap-2 px-2">
+                    <div className="flex flex-col md:flex-row gap-2 px-2">
                         <div className="border space-y-3">
                             <div className="w-full bg-[#D9D9D9] h-56"></div>
                             <div className="px-2">

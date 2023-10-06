@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom";
-import user from "../../../assets/user.png"
+import user1 from "../../../assets/user.png"
+import { useAuth } from "../../../AuthProvider/Authprovider";
 const Navbar = () => {
+    const { user ,LogOut } = useAuth();
+
+    const handleLogout = () => {
+        LogOut()
+            .then(result => {
+            console.log('LogOut Successfully')
+            })
+            .catch(error => {
+            console.log('Log Out Failed..')
+        })
+    }
     const navLinks = <>
-        <li><Link>Home</Link></li>
-        <li><Link>About</Link></li>
-        <li><Link>Career</Link></li>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/about'>About</Link></li>
+        <li><Link to='/career'>Career</Link></li>
     </>
     return (
         <div className="navbar bg-base-100">
@@ -40,8 +52,11 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end flex gap-1">
-                <img className="w-10" src={user}></img>
-                <a className="bg-[#403F3F] text-white text-lg font-semibold py-1 px-6">Login</a>
+                <img className="w-10" src={user1}></img>
+                {
+                    user?<p onClick={handleLogout} className="bg-[#403F3F] text-white text-lg font-semibold py-1 px-6">LogOut</p> :<Link to='/login' className="bg-[#403F3F] text-white text-lg font-semibold py-1 px-6">Login</Link>
+                }
+                
             </div>
         </div>
     );
